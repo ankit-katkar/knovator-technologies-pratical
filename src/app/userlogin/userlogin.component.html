@@ -1,0 +1,110 @@
+<div class="container">
+    <div class="logIn" *ngIf="!isLogin">
+      <div class="card">
+        <div class="card-body">
+          <form [formGroup]="userLogIn" (ngSubmit)="LogIn(userLogIn.value)">
+            <div class="form-group">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter email" name="email"
+              formControlName="Email"
+              [ngClass]="{'is-invalid': loginSubmit && logInf['Email'].errors}">
+              <div *ngIf="loginSubmit && logInf['Email'].errors" class="invalid-feedback">
+                <div *ngIf="logInf['Email'].errors['required']">
+                  Enter Valid Email Address
+                </div>
+              </div>
+            </div>
+  
+            <div class="form-group">
+              <label for="pwd" class="form-label">Password</label>
+              <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd"
+              formControlName="Password"
+              [ngClass]="{'is-invalid': loginSubmit && logInf['Password'].errors}">
+              <div *ngIf="loginSubmit && logInf['Password'].errors" class="invalid-feedback">
+                <div *ngIf="logInf['Password'].errors['required']">
+                  Enter Valid Password
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <p (click)="onLogin()">You don't have any account <span>SignUp</span></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  
+    <div class="SignUp" *ngIf="isLogin">
+      <div class="card">
+        <div class="card-body">
+          <form [formGroup]="userSignUp" (ngSubmit)="SignUp(userSignUp.value)">
+            <div class="form-group">
+              <label for="username" class="form-label">Username</label>
+              <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username"
+              formControlName="UserName"
+              [ngClass]="{'is-invalid': signupSubmit && signUpf['UserName'].errors}">
+              <div *ngIf="signupSubmit && signUpf['UserName'].errors" class="invalid-feedback">
+                <div *ngIf="signUpf['UserName'].errors['required']">
+                  Enter Valid User Name
+                </div>
+              </div>
+            </div>
+  
+            <div class="form-group">
+              <label for="pwd" class="form-label">Password</label>
+              <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd"
+              formControlName="Password"
+              [ngClass]="{'is-invalid': signupSubmit && signUpf['Password'].errors}">
+              <div *ngIf="signupSubmit && signUpf['Password'].errors" class="invalid-feedback">
+                <div *ngIf="signUpf['Password'].errors['required']">
+                  Enter Valid Password
+                </div>
+              </div>
+            </div>
+  
+            <div class="form-group">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email"
+              formControlName="Email"
+              [ngClass]="{'is-invalid': signupSubmit && signUpf['Email'].errors}">
+              <div *ngIf="signupSubmit && signUpf['Email'].errors" class="invalid-feedback">
+                <div *ngIf="signUpf['Email'].errors['required']">
+                  Enter Valid Email Address
+                </div>
+              </div>
+            </div>
+  
+            <div class="form-group">
+              <label for="number" class="form-label">Mobile Number</label>
+              <input type="number" class="form-control" id="number" placeholder="Enter Mobile Number" name="number"
+              formControlName="ContactNumber"
+              [ngClass]="{'is-invalid': signupSubmit && signUpf['ContactNumber'].errors}">
+              <div *ngIf="signupSubmit && signUpf['ContactNumber'].errors" class="invalid-feedback">
+                <div *ngIf="signUpf['ContactNumber'].errors['required']">
+                  Enter Valid Contact Number
+                </div>
+              </div>
+            </div>
+  
+            <div class="form-group">
+              <label for="gender" class="form-label">Gender</label>
+              <select class="form-select" formControlName="Gender" 
+              [ngClass]="{'is-invalid': signupSubmit && signUpf['Gender'].errors}">
+                <option>Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+              <div *ngIf="signupSubmit && signUpf['Gender'].errors" class="invalid-feedback">
+                <div *ngIf="signUpf['Gender'].errors['required']">
+                  Select Gender
+                </div>
+              </div>
+            </div>
+  
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <p (click)="onSignUp()">You have any account <span>LogIn</span></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

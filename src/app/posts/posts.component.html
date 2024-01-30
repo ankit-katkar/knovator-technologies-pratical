@@ -1,0 +1,118 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <h1>Add Posts</h1>
+            <form [formGroup]="addPosts">
+              <div class="form-group">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" placeholder="Enter Title" name="title"
+                formControlName="Title"
+                [ngClass]="{'is-invalid': submitted && f['Title'].errors}">
+                <div *ngIf="submitted && f['Title'].errors" class="invalid-feedback">
+                    <div *ngIf="f['Title'].errors['required']"> Enter Title </div>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="comment" class="form-label">Comments:</label>
+                <textarea class="form-control" rows="3" id="comment" name="text"
+                formControlName="Comment"
+                [ngClass]="{'is-invalid': submitted && f['Comment'].errors}"></textarea>
+                <div *ngIf="submitted && f['Comment'].errors" class="invalid-feedback">
+                  <div *ngIf="f['Comment'].errors['required']"> Enter Comment </div>
+              </div>
+              </div>
+      
+              <div class="form-group">
+                <mat-form-field class="example-chip-list" >
+                  <mat-label>Tag</mat-label>
+                  <mat-chip-grid #chipGrid aria-label="Enter fruits">
+                    @for (chips of inputTag; track chips) {
+                      <mat-chip-row
+                        (removed)="remove(chips)"
+                        [editable]="true"
+                        (edited)="edit(chips, $event)"
+                        [aria-description]="'press enter to edit ' + chips.name">
+                        {{chips.name}}
+                        <button matChipRemove [attr.aria-label]="'remove ' + chips.name">
+                          <mat-icon>cancel</mat-icon>
+                        </button>
+                      </mat-chip-row>
+                    }
+                    <input placeholder="Enter Tag..."
+                           [matChipInputFor]="chipGrid"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="add($event)" 
+                           
+                           [ngClass]="{'is-invalid': submitted && f['Tags'].errors}"/>
+                           <div *ngIf="submitted && f['Tags'].errors" class="invalid-feedback">
+                              <div *ngIf="f['Tags'].errors['required']">Enter Tags</div>
+                           </div>
+                  </mat-chip-grid>
+                </mat-form-field>
+              </div>
+        
+              <div class="form-group">
+                <label for="Status" class="form-label">Status:</label>
+                <select class="form-select" formControlName="Status"
+                [ngClass]="{'is-invalid': submitted && f['Status'].errors}">
+                  <option>Select Status...</option>
+                  <option>Active</option>
+                  <option>Inactive</option>
+                </select>
+                <div *ngIf="submitted && f['Status'].errors" class="invalid-feedback">
+                  <div *ngIf="f['Status'].errors['required']"> Select Status </div>
+              </div>
+              </div>
+              <button class="btn btn-primary" *ngIf="!isEdit" type="submit" (click)="onSubmit(addPosts.value)">
+                Submit
+              </button>
+              <button class="btn btn-primary" *ngIf="isEdit" type="submit" (click)="onUpdate()">
+                Update
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-lg-8">
+        <h1>View Posts</h1>
+        <table class="table table-bordered">
+          <thead>
+           <tr>
+            <th>Title</th>
+            <th>Comment</th>
+            <th>Tags</th>
+            <th>Status</th>
+            <th>Action</th>
+           </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let post of posts">
+              <td>{{post.Title}}</td>
+              <td>{{post.Comment}}</td>
+              <td>
+                <div *ngFor="let list of post.Tags">
+                  {{list.name}}
+                </div>
+              </td>
+              <td class="chip">
+                <span class="badge rounded-pill text-white bg-success" *ngIf="post.Status=='Active'">
+                  {{post.Status}}
+                </span>
+                <span class="badge rounded-pill text-white bg-danger" *ngIf="post.Status=='Inactive'">
+                  {{post.Status}}
+                </span></td>
+              <td>
+                <button class="btn btn-warning" type="submit" (click)="onEdit(post, post.id)">Edit</button>
+                <button class="btn btn-danger" type="submit" (click)="onDelete(post.id)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,31 @@
+{
+  "userLogIn": [
+    {
+      "UserName": "Test",
+      "Password": "test123",
+      "Email": "test@gmail.com",
+      "ContactNumber": 1234567890,
+      "Gender": "Male",
+      "id": 1
+    }
+  ],
+  "Posts": [
+    {
+      "Title": "Demo",
+      "Comment": "This is a demo text",
+      "Tags": [
+        {
+          "name": "Demo1"
+        },
+        {
+          "name": "Demo2"
+        },
+        {
+          "name": "Demo3"
+        }
+      ],
+      "Status": "Active",
+      "id": 2
+    }
+  ]
+}

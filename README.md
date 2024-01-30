@@ -25,3 +25,16 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+<!-- Serve Project -->
+first open terminal and ren ng serve command in your terminal.
+
+<!-- Json Server -->
+json-server --watch db.json
+
+run this command to run json server
+
+<!-- Login -->
+id: test@gmail.com
+password: test123

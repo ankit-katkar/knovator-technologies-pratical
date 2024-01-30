@@ -1,0 +1,53 @@
+p {
+    font-size: 0.9vw;
+    font-family: "Poppins", sans-serif;
+    margin-top: 1vh;
+  }
+  
+  p span {
+    color: blue;
+    font-size: 1vw;
+    cursor: pointer;
+  }
+  
+  label {
+    font-family: "Poppins", sans-serif;
+  }
+  
+  ::placeholder {
+    font-family: "Poppins", sans-serif;
+    font-size: 1vw;
+  }
+  
+  .btn {
+    width: 50%;
+    display: block;
+    margin: auto;
+  }
+    
+  .card {
+    width: 30%;
+    margin: auto;
+    display: block;
+    margin-top: 24vh;
+  }
+  
+  form {
+    padding: 4% 8% 4% 8%;
+  }
+  
+  .form-group {
+    margin-bottom: 4vh;
+  }
+  
+  .SignUp .card {
+    margin-top: 10vh;
+    width: 34%;
+  }
+  
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
