@@ -35,6 +35,8 @@ json-server --watch db.json
 
 run this command to run json server
 
+<!-- NPM -->
+run npm i to install node module. and then run ng serve command.
 <!-- Login -->
 id: test@gmail.com
 password: test123
